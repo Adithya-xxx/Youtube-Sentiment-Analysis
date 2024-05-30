@@ -16,7 +16,7 @@ class YouTubeCommentAnalyzer(HttpUser):
 
         # Fetching video details to get uploader's channel ID
         video_response = self.client.get(
-            f"https://www.googleapis.com/youtube/v3/videos?part=snippet&id={video_id}&key=AIzaSyAT4h5pQRMXWp8X1bV8WN7h3w7gY_CG6lE"
+            f"https://www.googleapis.com/youtube/v3/videos?part=snippet&id={video_id}&key=YOUTUBE_API_KEY"
         ).json()
         uploader_channel_id = video_response['items'][0]['snippet']['channelId']
 
@@ -25,7 +25,7 @@ class YouTubeCommentAnalyzer(HttpUser):
         next_page_token = None
         while len(comments) < 600:
             response = self.client.get(
-                f"https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId={video_id}&maxResults=100&pageToken={next_page_token}&key=AIzaSyAT4h5pQRMXWp8X1bV8WN7h3w7gY_CG6lE"
+                f"https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId={video_id}&maxResults=100&pageToken={next_page_token}&key=YOUTUBE_API_KEY"
             ).json()
             for item in response['items']:
                 comment = item['snippet']['topLevelComment']['snippet']
