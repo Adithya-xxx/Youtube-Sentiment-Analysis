@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 
 def FetchingComments(comments):
-    API_KEY = 'AIzaSyAT4h5pQRMXWp8X1bV8WN7h3w7gY_CG6lE'# Put in your API Key
+    API_KEY = 'YOUR_API_KEY'# Put in your API Key
 
     youtube = build('youtube', 'v3', developerKey=API_KEY) # initializing Youtube API
 
